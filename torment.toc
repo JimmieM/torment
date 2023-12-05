@@ -3,4 +3,6 @@
 ## Notes: Discipline Priest Shadow Covenant uptime tracker
 ## SavedVariables: CombatInteractions
 torment.lua
+tormentCovenantTracker.lua
+tormentMinimapbutton.lua
 tormentUI.lua
