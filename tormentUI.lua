@@ -1,7 +1,7 @@
 local uiFrame = nil
 
 uiFrame = CreateFrame("Frame", "TormentUI", UIParent, "BasicFrameTemplateWithInset")
-uiFrame:SetSize(600, 300) 
+uiFrame:SetSize(500, 300) 
 uiFrame:SetPoint("CENTER")
 uiFrame:SetMovable(true)
 uiFrame:EnableMouse(true)
@@ -38,7 +38,7 @@ end
 function ShowCombatDataUI()
     local scrollFrame = CreateFrame("ScrollFrame", nil, uiFrame, "UIPanelScrollFrameTemplate")
     scrollFrame:SetPoint("TOPLEFT", 10, -30)
-    scrollFrame:SetSize(580, 260)
+    scrollFrame:SetSize(460, 260)
 
 
     if uiFrame.content then
@@ -61,35 +61,38 @@ function ShowCombatDataUI()
         local yOffsetInactive = baseYOffset
         local yOffsetReducer = baseYOffset
 
-        local encounterText = content:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+        local encounterText = content:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
         encounterText:SetPoint("TOPLEFT", 5, baseYOffset)
         encounterText:SetText("Encounter: " .. combatData.encounterName)
+        
+        -- Display All Reducer Casts Instances on the far right
+        local reducerText = content:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+        reducerText:SetPoint("TOPRIGHT", -5, baseYOffset)  -- Positioned to the far right
+        reducerText:SetText("Reducer Casts: " .. combatData.allReducerCasts)
+
         yOffsetActive = yOffsetActive - 20
         yOffsetInactive = yOffsetInactive - 20
         yOffsetReducer = yOffsetReducer - 20
-
-        -- Display Buff Inactive Data Instances
-        for _, inactiveInstance in ipairs(combatData.buffInactiveData) do
-            local inactiveText = content:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-            inactiveText:SetPoint("TOPLEFT", 225, yOffsetInactive) -- Positioned beside the active column
-            inactiveText:SetText("Spells Cast: " .. inactiveInstance.spellCounts ..
-                                    "  -  Uptime: " .. inactiveInstance.uptime .. "s")
-            yOffsetInactive = yOffsetInactive - 15
-        end
 
         -- Display Buff Active Data Instances
         for _, activeInstance in ipairs(combatData.buffActiveData) do
             local activeText = content:CreateFontString(nil, "OVERLAY", "GameFontNormal")
             activeText:SetPoint("TOPLEFT", 5, yOffsetActive)
-            activeText:SetText("Covenant Spells Cast: " .. activeInstance.spellCounts ..
-                               "  -  Uptime: " .. activeInstance.uptime .. "s")
+            activeText:SetText("Covenant uptime: " .. activeInstance.spellCounts ..
+                                "  -  Uptime: " .. activeInstance.uptime .. "s")
             yOffsetActive = yOffsetActive - 15
         end
 
-        -- Display All Reducer Casts Instances
-        local reducerText = content:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-        reducerText:SetPoint("TOPLEFT", 425, yOffsetReducer) -- Positioned beside the inactive column
-        reducerText:SetText("Reducer Casts: " .. combatData.allReducerCasts)
+        -- Display Buff Inactive Data Instances
+        for _, inactiveInstance in ipairs(combatData.buffInactiveData) do
+            local inactiveText = content:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+            inactiveText:SetPoint("TOPLEFT", 300, yOffsetInactive) -- Positioned beside the active column
+            inactiveText:SetText("Spells Cast: " .. inactiveInstance.spellCounts ..
+                                    "  -  Uptime: " .. inactiveInstance.uptime .. "s")
+            yOffsetInactive = yOffsetInactive - 15
+        end
+
+
         yOffsetReducer = yOffsetReducer - 15
 
         local lowestYOffset = math.min(yOffsetActive, yOffsetInactive, yOffsetReducer)
