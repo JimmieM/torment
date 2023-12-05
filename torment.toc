@@ -1,0 +1,6 @@
+## Interface: 100107
+## Title: Torment
+## Notes: Discipline Priest Shadow Covenant uptime tracker
+## SavedVariables: CombatInteractions
+torment.lua
+tormentUI.lua
