@@ -28,7 +28,6 @@ function ShowCombatDataUI()
     scrollFrame:SetPoint("TOPLEFT", 10, -30)
     scrollFrame:SetSize(460, 260)
 
-
     if UIFrame.content then
         for i, child in ipairs({UIFrame.content:GetChildren()}) do
             child:Hide()
@@ -58,15 +57,15 @@ function ShowCombatDataUI()
         yOffsetInactive = yOffsetInactive - 20
         yOffsetReducer = yOffsetReducer - 20
 
-            -- headers
-    local activeSummaryText = content:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-    activeSummaryText:SetPoint("TOPLEFT", 5, yOffsetActive)
-    activeSummaryText:SetText("Shadow casts / uptime")
+         -- headers
+        local activeSummaryText = content:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        activeSummaryText:SetPoint("TOPLEFT", 5, yOffsetActive)
+        activeSummaryText:SetText("Shadow casts / uptime")
 
-    local inactiveSummaryText = content:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-    inactiveSummaryText:SetPoint("TOPLEFT", 275, yOffsetActive)
-    inactiveSummaryText:SetText("Holy casts / downtime")
-            
+        local inactiveSummaryText = content:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        inactiveSummaryText:SetPoint("TOPLEFT", 275, yOffsetActive)
+        inactiveSummaryText:SetText("Holy casts / downtime")
+               
 
         -- Display Buff Active Data Instances
         for _, activeInstance in ipairs(combatData.buffActiveData) do
