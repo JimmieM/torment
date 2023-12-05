@@ -65,7 +65,7 @@ function ShowCombatDataUI()
         local inactiveSummaryText = content:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
         inactiveSummaryText:SetPoint("TOPLEFT", 275, yOffsetActive)
         inactiveSummaryText:SetText("Holy casts / downtime")
-               
+
 
         -- Display Buff Active Data Instances
         for _, activeInstance in ipairs(combatData.buffActiveData) do
@@ -119,7 +119,7 @@ function ShowCombatDataUI()
         local inactiveSummaryText = content:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
         inactiveSummaryText:SetPoint("TOPLEFT", 165, lowestYOffset - 20)
         inactiveSummaryText:SetText("Total holy casts " .. totalInactiveSpells ..
-                                    " / " .. totalInactiveUptime .. "s" .. " -s " .. string.format("%.2f", buffUptimePercentage) .. "%")
+                                    " / " .. totalInactiveUptime .. "s" .. " - " .. string.format("%.2f", buffUptimePercentage) .. "%")
 
         local inactiveSummaryText = content:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
         inactiveSummaryText:SetPoint("TOPLEFT", 355, lowestYOffset - 20)
